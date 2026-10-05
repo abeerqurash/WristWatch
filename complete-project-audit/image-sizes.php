@@ -1,1 +1,0 @@
-<?php foreach(['storage/app/public/products/variants/uhd-8k-wallpaper-watch-dogs-two.jpg','public/asset/media/portfolio-abeer.png'] as $p){$x=getimagesize($p);echo basename($p).' '.$x[0].'x'.$x[1].PHP_EOL;}

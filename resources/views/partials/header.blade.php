@@ -12,7 +12,7 @@
 <div class="navbar">
     <div class="navbar-wrapper">
         <div class="left-navbar">
-            <a href="/" class="logo">Arizona Outfits</a>
+            <a href="/" class="logo">Wrist Watch</a>
             <button type="button" class="menu-button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="arizonaMegaMenu">
                 <span class="line line-1"></span>
                 <span class="line line-2"></span>
