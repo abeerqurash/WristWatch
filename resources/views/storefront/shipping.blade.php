@@ -1,0 +1,3 @@
+@extends('layouts.storefront')
+@section('title','Shipping & Returns | WristWatch')
+@section('content')<div class="ww-container"><div class="ww-page-title"><h1>Shipping & Returns</h1></div><div class="ww-copy"><h3>Shipping</h3><p>Delivery options and charges are displayed at checkout before you place your order. View the order status in your customer account.</p><h3>Returns</h3><p>For return assistance, contact our customer service team with your order number. We will help you with the next steps.</p><a class="ww-button ww-button-outline" href="{{ route('contact-page') }}">Contact Us</a></div></div>@endsection

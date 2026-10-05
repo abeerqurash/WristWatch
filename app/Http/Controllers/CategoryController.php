@@ -12,6 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::query()
+            ->whereHas('posts', fn ($query) => $query->published())
             ->withCount([
                 'posts as published_posts_count' => function ($query) {
                     $query->published();

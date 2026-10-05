@@ -20,7 +20,7 @@
         'auth.partials.visual-copy',
         [
             'heading' => 'Create your account.',
-            'message' => 'Use your phone number to create a secure Arizona Outfits customer account.'
+            'message' => 'Use your phone number to create a secure WristWatch customer account.'
         ]
     )
 

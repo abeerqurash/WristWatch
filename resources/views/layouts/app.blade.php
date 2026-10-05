@@ -14,7 +14,7 @@
 
     @php($needsPhoneInput = (str_contains($__env->yieldContent('content'), 'phone-field') || str_contains($__env->yieldContent('content'), 'phone-number')))
     @php($publicSeo = app(\App\Services\PublicSeoService::class)->values(get_defined_vars(), trim($__env->yieldContent('title')), trim($__env->yieldContent('meta_description'))))
-    <title>{{ $publicSeo['title'] }}</title>
+    <title>{{ str_replace('Arizona Outfits','WristWatch',$publicSeo['title']) }}</title>
     <meta name="description" content="{{ $publicSeo['description'] }}">
     <meta name="robots" content="{{ $publicSeo['robots'] }}">
     <link rel="canonical" href="{{ $publicSeo['canonical'] }}">
@@ -69,6 +69,9 @@
     @stack('page-styles')
 
 <link rel="stylesheet" href="{{ asset('asset/css/arizona-commerce-ui.css') }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap">
+<link rel="stylesheet" href="{{ asset('storefront/storefront.css') }}">
+<link rel="stylesheet" href="{{ asset('storefront/legacy.css') }}">
 </head>
 
 <body
@@ -82,7 +85,7 @@
             )
             : 'page'
     }}"
-    class="{{
+    class="ww-storefront ww-legacy {{
         Route::currentRouteName()
             ? str_replace(
                 '.',
@@ -93,13 +96,13 @@
     }}"
 >
 
-    @include('partials.header')
+    @include('storefront.header')
 
     <main>
         @yield('content')
     </main>
 
-    @include('partials.footer')
+    @include('storefront.footer')
 
     @if($needsPhoneInput)<script
         src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js" defer></script>@endif
@@ -191,6 +194,8 @@
     @endif
 
     <script src="{{ app(\App\Services\PublicAssetService::class)->url('asset/js/card-carousel.js') }}" defer></script>
+    <script src="{{ asset('storefront/storefront.js') }}" defer></script>
+    <div id="ww-toast" role="status" aria-live="polite"></div>
     @stack('page-scripts')
 
 </body>

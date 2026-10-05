@@ -1,0 +1,3 @@
+@php($media=app(\App\Services\PublicMediaService::class))
+@php($price=$product->sale_price !== null && $product->sale_price < $product->regular_price ? $product->sale_price : $product->regular_price)
+<div class="ww-quick-layout"><img src="{{ $media->productImage($product) }}" alt="{{ $product->title }}"><div><p>WristWatch</p><h2>{{ $product->title }}</h2><div class="ww-detail-price" data-product-price>{{ app(\App\Services\StoreSettingsService::class)->money((float)$price) }}</div><p>{{ strip_tags($product->short_description ?? '') }}</p>@include('storefront.product-form')<a href="{{ route('products.show',$product->slug) }}">View Full Details →</a></div></div>

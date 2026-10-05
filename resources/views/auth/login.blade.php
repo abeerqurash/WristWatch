@@ -70,7 +70,7 @@
 
         @if (Route::has('register'))
             <p class="auth-switch">
-                New to Arizona Outfits?
+                New to WristWatch?
                 <a href="{{ route('register') }}">Create an account</a>
             </p>
         @endif

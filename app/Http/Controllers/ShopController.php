@@ -20,6 +20,7 @@ class ShopController extends Controller
     public function index(Request $request, ?ProductCategory $currentCategory = null): View
     {
         $validated = $request->validate([
+            'per_page' => ['nullable','integer','in:12,24,36'],
             'search' => [
                 'nullable',
                 'string',
@@ -193,7 +194,7 @@ class ShopController extends Controller
         );
 
         $products = $query
-            ->paginate(15)
+            ->paginate((int) ($validated['per_page'] ?? 12))
             ->withQueryString();
 
         $categories = $this->getActiveCategories();
@@ -215,6 +216,7 @@ class ShopController extends Controller
         */
 
         $filterOptions = ProductOption::query()
+            ->whereHas('products', fn ($query) => $query->where('status', 'active'))
             ->with([
                 'values' => function ($query) {
                     $query

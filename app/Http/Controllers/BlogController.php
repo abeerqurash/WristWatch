@@ -149,7 +149,7 @@ class BlogController extends Controller
             default => $query->orderByDesc('published_at')->orderByDesc('id'),
         };
         $urlFilters = array_filter(Arr::except($filters, ['page']), fn ($value) => $value !== '' && $value !== null);
-        $posts = $query->paginate(12, ['posts.*'], 'page', (int) $filters['page'])
+        $posts = $query->paginate(3, ['posts.*'], 'page', (int) $filters['page'])
             ->appends($urlFilters)->fragment('article-filters');
 
         $activeFilters = [];
@@ -315,11 +315,7 @@ class BlogController extends Controller
          */
         $bladePath = 'blogs.posts.' . ($post->template ?: $post->slug);
 
-        if (!View::exists($bladePath)) {
-            abort(404, 'Post view not found.');
-        }
-
-        return view($bladePath, [
+        return view('storefront.article', [
             'post' => $post,
             'latestPosts' => $latestPosts,
             'relatedPosts' => $relatedPosts,

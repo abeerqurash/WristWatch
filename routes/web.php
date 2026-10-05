@@ -396,7 +396,7 @@ Route::get(
 
 
 
-Route::get('/product-categories', function () { $categories=\App\Models\ProductCategory::withCount(['products'=>fn($q)=>$q->where('status','active')])->orderBy('title')->paginate(15); return view('products.categories',compact('categories')); })->name('product-categories-page');
+Route::get('/product-categories', function () { $categories=\App\Models\ProductCategory::whereHas('products',fn($q)=>$q->where('status','active'))->withCount(['products'=>fn($q)=>$q->where('status','active')])->orderBy('title')->paginate(15); return view('products.categories',compact('categories')); })->name('product-categories-page');
 
 Route::get(
 
@@ -6421,6 +6421,8 @@ Route::get('/sitemap/{type}/{page}.xml', [\App\Http\Controllers\SitemapControlle
     ->whereIn('type', ['static','products','posts','pages','product-categories','blog-categories'])
     ->whereNumber('page')->name('sitemap.part');
 
+require __DIR__ . '/storefront.php';
+require __DIR__ . '/storefront.php';
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog-show');
 
 Route::get(

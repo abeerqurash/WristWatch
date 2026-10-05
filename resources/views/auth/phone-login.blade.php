@@ -20,7 +20,7 @@
         'auth.partials.visual-copy',
         [
             'heading' => 'Welcome back.',
-            'message' => 'Enter your verified phone number to securely access your Arizona Outfits account.'
+            'message' => 'Enter your verified phone number to securely access your WristWatch account.'
         ]
     )
 

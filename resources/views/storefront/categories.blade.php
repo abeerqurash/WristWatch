@@ -1,0 +1,5 @@
+@extends('layouts.storefront')
+@section('title','Collections | WristWatch')
+@section('content')
+<div class="ww-container"><div class="ww-page-title"><h1>{{ request()->routeIs('categories-page')?'Blog Categories':'Product Categories' }}</h1><p>Explore our collections.</p></div><div class="ww-directory">@forelse($categories as $category)<a class="ww-directory-card" href="{{ request()->routeIs('categories-page')?route('category-show',$category->slug):route('products.category',$category->slug) }}"><img src="{{ request()->routeIs('categories-page')?($category->image_url ?: asset('storefront/images/mens.jpg')):($category->featured_image ? app(\App\Services\PublicMediaService::class)->url($category->featured_image):asset('storefront/images/mens.jpg')) }}" alt="{{ $category->title }}" loading="lazy"><h2>{{ $category->title }}</h2><p>Explore Collection →</p></a>@empty<div class="ww-empty">No categories available yet.</div>@endforelse</div>@if(method_exists($categories,'links'))<div class="ww-pagination">{{ $categories->links() }}</div>@endif</div>
+@endsection

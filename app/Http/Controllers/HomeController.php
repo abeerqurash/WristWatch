@@ -55,8 +55,8 @@ class HomeController extends Controller
             ->withAvg('approvedReviews as approved_reviews_avg_rating', 'rating')
             ->withCount('approvedReviews as approved_reviews_count')
             ->where('status', 'active');
-        $latestProducts = $catalogOrder->apply(clone $query)->take(6)->get();
-        $popularProducts = $catalogOrder->apply((clone $query)->whereNotIn('products.id', $latestProducts->modelKeys()))->take(6)->get();
+        $latestProducts = (clone $query)->orderByDesc('purchase_count')->orderBy('id')->take(6)->get();
+        $popularProducts = (clone $query)->where('is_featured', true)->orderBy('id')->take(6)->get();
 
         /*
         |--------------------------------------------------------------------------
@@ -65,10 +65,10 @@ class HomeController extends Controller
         */
 
         return view('home', [
-            'title' => 'Arizona Outfits',
+            'title' => 'WristWatch',
 
             'meta_description' =>
-                'Shop the latest collections and discover popular products at Arizona Outfits.',
+                'Shop the latest watch collections and discover timeless design at WristWatch.',
 
             'robots' =>
                 'index, follow',

@@ -66,7 +66,7 @@
                     id="email-help"
                     class="auth-recovery-help"
                 >
-                    Use the email address connected to your Arizona Outfits account.
+                    Use the email address connected to your WristWatch account.
                 </small>
 
             </div>

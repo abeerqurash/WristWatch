@@ -12,7 +12,7 @@
         'auth.partials.visual-copy',
         [
             'heading' => 'One more security check.',
-            'message' => 'Confirm your password before continuing to this protected area of your Arizona Outfits account.'
+            'message' => 'Confirm your password before continuing to this protected area of your WristWatch account.'
         ]
     )
 

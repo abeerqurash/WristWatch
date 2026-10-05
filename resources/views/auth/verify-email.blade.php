@@ -24,7 +24,7 @@
         'auth.partials.visual-copy',
         [
             'heading' => 'Almost there.',
-            'message' => 'Verify your email address to secure your Arizona Outfits account and continue using your account features.'
+            'message' => 'Verify your email address to secure your WristWatch account and continue using your account features.'
         ]
     )
 
